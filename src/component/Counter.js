@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { INCREMENT } from '../common/constant';
+import { DECREMENT } from '../common/constant';
 
 class Counter extends Component {
     constructor(props) {
@@ -13,8 +15,11 @@ class Counter extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.number !== this.state.number){
-            this.props.calculateSum(this.state.number);
+        if (prevState.number < this.state.number){
+            this.props.calculateSum(INCREMENT);
+        }
+        if (prevState.number > this.state.number){
+            this.props.calculateSum(DECREMENT);
         }
       }
 
