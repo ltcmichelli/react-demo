@@ -42,7 +42,7 @@ class Counter extends Component {
 
     onDecrease() {
         this.setState((prevState) => ({
-            number: prevState.number - DECREMENT
+            number: prevState.number + DECREMENT
         })
         )
     }
