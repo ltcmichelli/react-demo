@@ -1,0 +1,1 @@
+export const INITIAL_COUNTER_NUMBER = 2;

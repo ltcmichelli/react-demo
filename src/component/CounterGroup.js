@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Counter from './Counter';
+import {INITIAL_COUNTER_NUMBER} from '../common/constant';
 
 
 class CounterGroup extends Component {
@@ -9,7 +10,7 @@ class CounterGroup extends Component {
         this.onChange = this.onChange.bind(this);
 
         this.state = {
-            counterSize: 2
+            counterSize: INITIAL_COUNTER_NUMBER
         }
 
     }
