@@ -16,19 +16,18 @@ class Counter extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("prevState.number" + prevState.number);
-        console.log("this.state.number" + this.state.number);
         if (prevProps.counterNumber !== this.props.counterNumber){
             this.setState({
                 number: INITIAL_VALUE
             })
+            prevState = {
+                number: INITIAL_VALUE
+            }
         }
         if (prevState.number < this.state.number){
-            console.log("++");
             this.props.calculateSum(INCREMENT);
         }
         if (prevState.number > this.state.number){
-            console.log("--");
             this.props.calculateSum(DECREMENT);
         }
       }
