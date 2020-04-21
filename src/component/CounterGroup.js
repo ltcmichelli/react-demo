@@ -30,13 +30,16 @@ class CounterGroup extends Component {
         let counterList = this.initArray(this.state.counterSize);
         return (
             <div>
-                <form>
-                    <input onChange = {this.onChange} type = "text" value = {this.state.counterSize}></input>
-                </form>
+                <p> Generate
+                    <form>
+                        <input onChange = {this.onChange} type = "text" value = {this.state.counterSize}></input>
+                    </form>
+                    Counters
+                </p>
+                <p>sum of all counters value is</p>
                 {counterList.map((value) =>(
                     <Counter key = {value}/>
                 ))}
-                
             </div>
         );
     }
