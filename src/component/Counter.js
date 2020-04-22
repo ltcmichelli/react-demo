@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { INCREMENT } from '../common/constant';
 import { DECREMENT } from '../common/constant';
 import { INITIAL_VALUE } from '../common/constant';
+import { Button, Row, Col, Space } from 'antd';
+import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+
 
 class Counter extends Component {
     constructor(props) {
@@ -16,18 +19,18 @@ class Counter extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.counterNumber !== this.props.counterNumber){
+        if (prevProps.counterNumber !== this.props.counterNumber) {
             this.setState({
                 number: INITIAL_VALUE
             })
         }
-      }
+    }
 
     onIncrease() {
         this.setState((prevState) => ({
             number: prevState.number + INCREMENT
         }),
-        this.props.calculateSum(INCREMENT)
+            this.props.calculateSum(INCREMENT)
         )
     }
 
@@ -35,18 +38,22 @@ class Counter extends Component {
         this.setState((prevState) => ({
             number: prevState.number + DECREMENT
         }),
-        this.props.calculateSum(DECREMENT)
+            this.props.calculateSum(DECREMENT)
         )
     }
 
 
     render() {
         return (
-            <div>
-                <button onClick={this.onIncrease}>+</button>
-                <span>{this.state.number}</span>
-                <button onClick={this.onDecrease}>-</button>
-            </div>
+            <Space>
+                <Row>
+                    <Col span={12}>
+                        <Button shape="circle" icon={<ArrowUpOutlined />} onClick={this.onIncrease} />
+                        <span>{this.state.number}</span>
+                        <Button shape="circle" icon={<ArrowDownOutlined />} onClick={this.onDecrease}/>
+                    </Col>
+                </Row>
+            </Space>
         );
     }
 }
