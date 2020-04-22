@@ -20,29 +20,22 @@ class Counter extends Component {
             this.setState({
                 number: INITIAL_VALUE
             })
-            prevState = {
-                number: INITIAL_VALUE
-            }
-        }
-        if (prevState.number < this.state.number){
-            this.props.calculateSum(INCREMENT);
-        }
-        if (prevState.number > this.state.number){
-            this.props.calculateSum(DECREMENT);
         }
       }
 
     onIncrease() {
         this.setState((prevState) => ({
             number: prevState.number + INCREMENT
-        })
+        }),
+        this.props.calculateSum(INCREMENT)
         )
     }
 
     onDecrease() {
         this.setState((prevState) => ({
             number: prevState.number + DECREMENT
-        })
+        }),
+        this.props.calculateSum(DECREMENT)
         )
     }
 
