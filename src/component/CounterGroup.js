@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Counter from './Counter';
 import { INITIAL_COUNTER_NUMBER } from '../common/constant';
 import { INITIAL_VALUE } from '../common/constant';
+import CounterApi from '../apis/CounterApi';
 
 class CounterGroup extends Component {
     constructor(props) {
@@ -14,6 +15,16 @@ class CounterGroup extends Component {
             counterSize: INITIAL_COUNTER_NUMBER,
             sum: INITIAL_VALUE
         }
+
+    }
+
+    componentDidMount(){
+        CounterApi.getCounterSize().then((response) => {
+            let size = response.data.size;
+            this.setState({
+                counterSize: size
+            })
+        })
 
     }
 
