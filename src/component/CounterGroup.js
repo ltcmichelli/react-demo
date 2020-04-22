@@ -20,6 +20,7 @@ class CounterGroup extends Component {
 
     componentDidMount(){
         CounterApi.getCounterSize().then((response) => {
+            console.log(response.data);
             let size = response.data.size;
             this.setState({
                 counterSize: size
@@ -33,11 +34,19 @@ class CounterGroup extends Component {
     }
 
     onChange(event) {
-        let value = event.target.value;
-        this.setState({
-            counterSize: value.length > 0 ? parseInt(value) : 0,
-            sum: INITIAL_VALUE
+        // let value = event.target.value;
+        CounterApi.putCounterSize().then((response) => {
+            console.log(response.data);
+            let size = response.data.size;
+            this.setState({
+                counterSize: size,
+                sum: INITIAL_VALUE
+            })
         })
+        // this.setState({
+        //     counterSize: value.length > 0 ? parseInt(value) : 0,
+        //     sum: INITIAL_VALUE
+        // })
     }
 
     onCalculate(value) {
