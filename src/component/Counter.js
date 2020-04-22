@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { INCREMENT } from '../common/constant';
 import { DECREMENT } from '../common/constant';
 import { INITIAL_VALUE } from '../common/constant';
-import { Button, Row, Col, Space } from 'antd';
+import { Button, Typography, Col, Space } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
-
+const { Text } = Typography;
 
 class Counter extends Component {
     constructor(props) {
@@ -46,13 +46,11 @@ class Counter extends Component {
     render() {
         return (
             <Space>
-                <Row>
-                    <Col span={12}>
+                    <Col span={12} style={{ alignItems: "center" }}>
                         <Button shape="circle" icon={<ArrowUpOutlined />} onClick={this.onIncrease} />
-                        <span>{this.state.number}</span>
+                        <Text>{this.state.number}</Text>
                         <Button shape="circle" icon={<ArrowDownOutlined />} onClick={this.onDecrease}/>
                     </Col>
-                </Row>
             </Space>
         );
     }

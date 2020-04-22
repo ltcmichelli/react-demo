@@ -3,7 +3,8 @@ import Counter from './Counter';
 import { INITIAL_COUNTER_NUMBER } from '../common/constant';
 import { INITIAL_VALUE } from '../common/constant';
 import CounterApi from '../apis/CounterApi';
-import { Input, Space } from 'antd';
+import { Input, Card, Typography } from 'antd';
+const { Text } = Typography;
 
 class CounterGroup extends Component {
     constructor(props) {
@@ -60,15 +61,16 @@ class CounterGroup extends Component {
     render() {
         let counterList = this.initArray(this.state.counterSize);
         return (
-            <Space>
+            <Card>
                 Generate
                 <Input placeholder="Input number" onChange={this.onChange} type="text" value={this.state.counterSize} />
                     Counters
+                <br />
                 <p>sum of all counters value is {this.state.sum}</p>
                 {counterList.map((value) => (
                     <Counter key={value} counterNumber={this.state.counterSize} calculateSum={this.onCalculate} />
                 ))}
-            </Space>
+            </Card>
         );
     }
 }
